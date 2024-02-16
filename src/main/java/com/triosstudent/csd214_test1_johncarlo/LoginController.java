@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 
 public class LoginController {
     @FXML
@@ -13,12 +14,16 @@ public class LoginController {
     @FXML
     private Label loginMessage;
 
+    private static final String EMPTY_FIELDS_MESSAGE = "Please Provide Username or Password.";
+
     @FXML
     protected void onLoginButtonClick() {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
-        loginMessage.setText("");
-        //#TODO: Implement the login logic here
+        if (username.isEmpty() || password.isEmpty()) {
+            loginMessage.setTextFill(Color.RED);
+            loginMessage.setText(EMPTY_FIELDS_MESSAGE);
+        }
     }
 }
