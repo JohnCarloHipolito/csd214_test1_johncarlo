@@ -14,7 +14,12 @@ public class LoginController {
     @FXML
     private Label loginMessage;
 
+    private static final String USERNAME = "JOHN_CARLO";
+    private static final String PASSWORD = "P@ssW0rd123!";
+
     private static final String EMPTY_FIELDS_MESSAGE = "Please Provide Username or Password.";
+    private static final String SUCCESS_LOGIN_MESSAGE = "Success!!!";
+    private static final String INVALID_LOGIN_MESSAGE = "Sorry, Invalid Username or Password.";
 
     @FXML
     protected void onLoginButtonClick() {
@@ -24,6 +29,12 @@ public class LoginController {
         if (username.isEmpty() || password.isEmpty()) {
             loginMessage.setTextFill(Color.RED);
             loginMessage.setText(EMPTY_FIELDS_MESSAGE);
+        } else if (USERNAME.equals(username) && PASSWORD.equals(password)) {
+            loginMessage.setTextFill(Color.GREEN);
+            loginMessage.setText(SUCCESS_LOGIN_MESSAGE);
+        } else {
+            loginMessage.setTextFill(Color.RED);
+            loginMessage.setText(INVALID_LOGIN_MESSAGE);
         }
     }
 }
